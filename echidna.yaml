@@ -1,0 +1,19 @@
+
+testMode: "assertion"
+prefix: "invariant_"
+coverage: true
+corpusDir: "echidna"
+balanceAddr: 0x1043561a8829300000
+balanceContract: 0x1043561a8829300000
+filterBlacklist: false
+filterFunctions: [
+  'CryticTester.test_swap_exactIn_zeroForOne(uint128)',
+  'CryticTester.test_swap_exactIn_oneForZero(uint128)',
+  'CryticTester.test_swap_exactOut_zeroForOne(uint128)',
+  'CryticTester.test_swap_exactOut_oneForZero(uint128)',
+]
+codeSize: 0x60000
+seqLen: 10
+testLimit: 100000
+timeout: 3600 # 1 hour
+
