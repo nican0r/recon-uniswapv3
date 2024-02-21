@@ -9,36 +9,6 @@ import 'contracts/libraries/TickMath.sol';
 import 'test/recon/SetupUniswap.sol';
 
 abstract contract TargetFunctions is BaseTargetFunctions, Properties, BeforeAfter {
-    function uniswapV3Pool_collect(
-        address recipient,
-        int24 tickLower,
-        int24 tickUpper,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) public {
-        uniswapV3Pool.collect(recipient, tickLower, tickUpper, amount0Requested, amount1Requested);
-    }
-
-    function uniswapV3Pool_collectProtocol(
-        address recipient,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) public {
-        uniswapV3Pool.collectProtocol(recipient, amount0Requested, amount1Requested);
-    }
-
-    function uniswapV3Pool_flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) public {
-        uniswapV3Pool.flash(recipient, amount0, amount1, data);
-    }
-
-    function uniswapV3Pool_increaseObservationCardinalityNext(uint16 observationCardinalityNext) public {
-        uniswapV3Pool.increaseObservationCardinalityNext(observationCardinalityNext);
-    }
-
-    function uniswapV3Pool_initialize(uint160 sqrtPriceX96) public {
-        uniswapV3Pool.initialize(sqrtPriceX96);
-    }
-
     function uniswapV3Pool_mint(
         address recipient,
         int24 tickLower,
@@ -49,24 +19,14 @@ abstract contract TargetFunctions is BaseTargetFunctions, Properties, BeforeAfte
         uniswapV3Pool.mint(recipient, tickLower, tickUpper, amount, data);
     }
 
-    function uniswapV3Pool_setFeeProtocol(uint8 feeProtocol0, uint8 feeProtocol1) public {
-        uniswapV3Pool.setFeeProtocol(feeProtocol0, feeProtocol1);
-    }
-
-    function testERC20_approve(address spender, uint256 amount) public {
-        testERC20.approve(spender, amount);
-    }
-
-    function testERC20_mint(address to, uint256 amount) public {
-        testERC20.mint(to, amount);
-    }
-
-    function testERC20_transfer(address recipient, uint256 amount) public {
-        testERC20.transfer(recipient, amount);
-    }
-
-    function testERC20_transferFrom(address sender, address recipient, uint256 amount) public {
-        testERC20.transferFrom(sender, recipient, amount);
+    function uniswapV3Pool_swap(
+        address recipient,
+        bool zeroForOne,
+        int256 amountSpecified,
+        uint160 sqrtPriceLimitX96,
+        bytes calldata data
+    ) public {
+        uniswapV3Pool.swap(recipient, zeroForOne, amountSpecified, sqrtPriceLimitX96, data);
     }
 
     // swap invariant prop #17
